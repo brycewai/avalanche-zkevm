@@ -19,11 +19,11 @@ echo "building precompile.test"
 # to install the ginkgo binary (required for test build and run)
 go install -v github.com/onsi/ginkgo/v2/ginkgo@${GINKGO_VERSION}
 
-TEST_SOURCE_ROOT=$(pwd)
+ACK_GINKGO_RC=true ginkgo build ./tests/precompile ./tests/load
 
 # By default, it runs all e2e test cases!
 # Use "--ginkgo.skip" to skip tests.
 # Use "--ginkgo.focus" to select tests.
-TEST_SOURCE_ROOT="$TEST_SOURCE_ROOT" ginkgo run -procs=5 tests/precompile \
+./tests/precompile/precompile.test \
   --ginkgo.vv \
   --ginkgo.label-filter=${GINKGO_LABEL_FILTER:-""}
