@@ -144,7 +144,14 @@ func verifyPublicInput(accessibleState contract.AccessibleState, caller common.A
 	// CUSTOM CODE STARTS HERE
 	_ = inputStruct // CUSTOM CODE OPERATES ON INPUT
 
-	var output bool // CUSTOM CODE FOR AN OUTPUT
+	var output bool = true  // CUSTOM CODE FOR AN OUTPUT
+	for _,input := range inputStruct.Inputs {
+		if input.Cmp(inputStruct.P) != -1 {
+			fmt.Errorf("verifier-gte-snark-scalar-field")
+			output = false	
+		}   
+	}
+
 	packedOutput, err := PackVerifyPublicInputOutput(output)
 	if err != nil {
 		return nil, remainingGas, err
