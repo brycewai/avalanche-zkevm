@@ -141,8 +141,6 @@ func verifyPublicInput(accessibleState contract.AccessibleState, caller common.A
 		return nil, remainingGas, err
 	}
 
-	// CUSTOM CODE STARTS HERE
-	_ = inputStruct // CUSTOM CODE OPERATES ON INPUT
 
 	var output bool = true  // CUSTOM CODE FOR AN OUTPUT
 	for _,input := range inputStruct.Inputs {
